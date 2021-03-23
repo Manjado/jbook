@@ -1,5 +1,4 @@
 import produce from 'immer';
-import { act } from 'react-dom/test-utils';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import { Cell } from '../cell';
@@ -21,7 +20,7 @@ const initialState: CellsState = {
 };
 
 const reducer = produce(
-  (state: CellsState = initialState, action: Action): CellsState | void => {
+  (state: CellsState = initialState, action: Action): CellsState => {
     switch (action.type) {
       case ActionType.UPDATE_CELL:
         const { id, content } = action.payload;
@@ -66,7 +65,8 @@ const reducer = produce(
       default:
         return state;
     }
-  }
+  },
+  initialState
 );
 
 const randomId = () => {
