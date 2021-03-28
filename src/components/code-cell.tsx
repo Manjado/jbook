@@ -5,7 +5,7 @@ import bundler from '../bundler';
 import Resizable from './resizable';
 import bundle from '../bundler';
 import { Cell } from '../state';
-import { useAction } from '../hooks/use-actions';
+import { useActions } from '../hooks/use-actions';
 
 interface CodeCellProps {
   cell: Cell;
@@ -14,7 +14,7 @@ interface CodeCellProps {
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   const [code, setCode] = useState('');
   const [err, setErr] = useState('');
-  const { updateCell } = useAction();
+  const { updateCell } = useActions();
 
   useEffect(() => {
     console.log('use');
